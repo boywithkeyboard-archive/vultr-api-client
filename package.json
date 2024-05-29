@@ -1,0 +1,47 @@
+{
+  "name": "vultr-api-client",
+  "version": "1.20240529.0",
+  "author": "Samuel Kopp (https://samuelkopp.de)",
+  "license": "MIT",
+  "description": "A preconfigured, up-to-date OpenAPI client for Vultr.",
+  "funding": "https://github.com/sponsors/boywithkeyboard",
+  "repository": "github:boywithkeyboard/vultr-api-client",
+  "keywords": [
+    "vultr",
+    "openapi"
+  ],
+  "main": "./build/index.cjs",
+  "module": "./build/index.mjs",
+  "types": "./build/index.d.ts",
+  "files": [
+    "./build"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./build/index.mjs",
+        "types": "./build/index.d.ts"
+      },
+      "require": {
+        "default": "./build/index.cjs",
+        "types": "./build/index.d.ts"
+      }
+    }
+  },
+  "scripts": {
+    "download": "openapi-typescript ./spec.json -o ./spec.ts",
+    "build": "npm run download && tsc && esbuild index.ts --bundle --minify --format=esm --outfile=build/index.mjs && esbuild index.ts --bundle --minify --format=cjs --outfile=build/index.cjs"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.9.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "esbuild": "^0.21.4",
+    "openapi-typescript": "^6.7.6",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
