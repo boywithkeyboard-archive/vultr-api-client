@@ -33,7 +33,7 @@
     "build": "npm run download && tsc && esbuild index.ts --bundle --minify --format=esm --outfile=build/index.mjs && esbuild index.ts --bundle --minify --format=cjs --outfile=build/index.cjs"
   },
   "dependencies": {
-    "openapi-fetch": "^0.9.7"
+    "openapi-fetch": "^0.12.2"
   },
   "devDependencies": {
     "@types/node": "^20.14.2",
